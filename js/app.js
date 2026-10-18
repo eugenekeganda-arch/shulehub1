@@ -274,7 +274,7 @@ window.addEventListener('hashchange', () => {
 /* ---------- start ---------- */
 Object.assign(hooks, { go, render, reloadLookups, modal });
 async function boot() {
-  try { await loadSession(); } catch (e) { toast(e.message, 'bad'); S.me = null; }
+  if (configured) { try { await loadSession(); } catch (e) { toast(e.message, 'bad'); S.me = null; } }
   if (recovering && S.me) S.me.must_change_password = true;
   const v = routeNow(); if (v && !legalViews[v]) S.view = v;
   document.getElementById('app').innerHTML = '';
