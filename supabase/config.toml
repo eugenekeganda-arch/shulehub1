@@ -1,0 +1,15 @@
+# Supabase CLI settings for ShuleHub.
+# Only the settings ShuleHub depends on are listed; the CLI fills in the rest.
+project_id = "shulehub"
+
+[auth]
+# Nobody can sign themselves up: schools create every account through ShuleHub.
+enable_signup = false
+
+[auth.email]
+enable_signup = false
+
+# Safaricom calls this function directly, without a ShuleHub login.
+# It is protected by the secret key in the callback URL instead.
+[functions.mpesa-callback]
+verify_jwt = false
